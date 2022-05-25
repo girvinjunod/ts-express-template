@@ -1,8 +1,12 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import morganMiddleware from './middleware/morgan'
+import verifyJWT from './middleware/jwtAuth';
+
+import { createJWTToken } from './service/auth';
 
 import log from "./utils/logger";
+import { create } from 'domain';
 
 dotenv.config();
 
@@ -14,8 +18,13 @@ app.use(morganMiddleware)
 const port = process.env.PORT;
 
 app.get('/', (req: Request, res: Response) => {
-  log.info("hello");
+  log.info("hello")
   res.send('Hello world');
+});
+
+app.get('/tes', verifyJWT, (req: Request, res: Response) => {
+  // log.info("hello");
+  res.send('Hello tes');
 });
 
 app.listen(port, () => {
