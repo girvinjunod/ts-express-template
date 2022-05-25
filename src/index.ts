@@ -1,12 +1,9 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import morganMiddleware from './middleware/morgan'
-import verifyJWT from './middleware/jwtAuth';
-
-import { createJWTToken } from './service/auth';
+import initRoute from "./routes";
 
 import log from "./utils/logger";
-import { create } from 'domain';
 
 dotenv.config();
 
@@ -22,10 +19,7 @@ app.get('/', (req: Request, res: Response) => {
   res.send('Hello world');
 });
 
-app.get('/tes', verifyJWT, (req: Request, res: Response) => {
-  // log.info("hello");
-  res.send('Hello tes');
-});
+initRoute(app);
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
