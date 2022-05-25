@@ -1,6 +1,6 @@
 import { RequestHandler, Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import authConfig from "../config/auth.config";
+import authConfig from "../configs/auth.config";
 import log from "../utils/logger";
 
 const verifyJWT: RequestHandler = (req : Request, res : Response, next) => {

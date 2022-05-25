@@ -1,4 +1,4 @@
-import authConfig from "../config/auth.config";
+import authConfig from "../configs/auth.config";
 import { sign } from "jsonwebtoken";
 
 export function createJWTToken(username: string) {

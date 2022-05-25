@@ -1,6 +1,6 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
-import morganMiddleware from './middleware/morgan'
+import morganMiddleware from './middlewares/morgan'
 import initRoute from "./routes";
 
 import log from "./utils/logger";
